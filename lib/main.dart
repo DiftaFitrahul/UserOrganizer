@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
+import 'package:userorganizer/Screen/addUserScreen.dart';
 
 import 'package:userorganizer/Screen/HomeScreen.dart';
 import 'package:userorganizer/Widget/UsersListview.dart';
@@ -23,7 +24,10 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
                 .copyWith(secondary: Colors.teal)),
         home: const HomeScreen(),
-        routes: {UserListview.routeName: (context) => const UserListview()},
+        routes: {
+          CustomizeUserScreen.routeName: (context) =>
+              const CustomizeUserScreen()
+        },
       ),
     );
   }

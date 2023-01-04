@@ -7,6 +7,8 @@ class UserProviders with ChangeNotifier {
 
   List<User> get allUsers => _allUsers;
 
+  int get usersLength => _allUsers.length;
+
   void addUser(
       {String nameUser,
       String majorUser,
