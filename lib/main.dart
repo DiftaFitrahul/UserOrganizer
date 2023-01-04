@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:userorganizer/Providers/userProvider.dart';
+
 import 'package:userorganizer/Screen/HomeScreen.dart';
 
 void main() {
@@ -10,8 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeScreen(),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => UserProviders())],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'List of User',
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+                .copyWith(secondary: Colors.teal)),
+      ),
     );
   }
 }
