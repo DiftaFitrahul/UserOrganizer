@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
+import 'package:userorganizer/Screen/EditUserScreen.dart';
 import 'package:userorganizer/Screen/addUserScreen.dart';
 
 import 'package:userorganizer/Screen/HomeScreen.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         home: const HomeScreen(),
         routes: {
           CustomizeUserScreen.routeName: (context) =>
-              const CustomizeUserScreen()
+              const CustomizeUserScreen(),
+          EditUserScreen.routeName: (context) => const EditUserScreen()
         },
       ),
     );

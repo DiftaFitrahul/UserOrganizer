@@ -5,76 +5,52 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
 
-class CustomizeUserScreen extends StatefulWidget {
-  static const routeName = '/Users-list';
+class CustomizeUserScreen extends StatelessWidget {
   const CustomizeUserScreen({Key key}) : super(key: key);
-
-  @override
-  State<CustomizeUserScreen> createState() => _CustomizeUserScreenState();
-}
-
-class _CustomizeUserScreenState extends State<CustomizeUserScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController _nameController;
-  TextEditingController _majorController;
-  TextEditingController _studyAtController;
-  TextEditingController _imageController;
-
-  @override
-  void initState() {
-    super.initState();
-    _nameController = TextEditingController();
-    _majorController = TextEditingController();
-    _studyAtController = TextEditingController();
-    _imageController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _majorController.dispose();
-    _studyAtController.dispose();
-    _imageController.dispose();
-    super.dispose();
-  }
+  static const routeName = '/User-list';
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     final userList = Provider.of<UserProviders>(context, listen: false);
+    TextEditingController nameController = TextEditingController();
+    TextEditingController majorController = TextEditingController();
+    TextEditingController studyAtController = TextEditingController();
+    TextEditingController imageController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add User List"),
       ),
       body: Center(
           child: Form(
-              key: _formKey,
+              key: formKey,
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
                     TextFormField(
-                      controller: _nameController,
+                      controller: nameController,
                       decoration: const InputDecoration(hintText: 'Full name'),
                       validator: ((value) {
                         return validatorInput(value, "Name");
                       }),
                     ),
                     TextFormField(
-                      controller: _majorController,
+                      controller: majorController,
                       decoration: const InputDecoration(hintText: 'Major'),
                       validator: ((value) {
                         return validatorInput(value, "Major");
                       }),
                     ),
                     TextFormField(
-                      controller: _studyAtController,
+                      controller: studyAtController,
                       decoration: const InputDecoration(hintText: 'University'),
                       validator: ((value) {
                         return validatorInput(value, "University");
                       }),
                     ),
                     TextFormField(
-                      controller: _imageController,
+                      controller: imageController,
                       decoration:
                           const InputDecoration(hintText: 'Image Profile Link'),
                       validator: ((value) {
@@ -86,15 +62,15 @@ class _CustomizeUserScreenState extends State<CustomizeUserScreen> {
                     ),
                     TextButton(
                         onPressed: () {
-                          if (!_formKey.currentState.validate()) {
+                          if (!formKey.currentState.validate()) {
                             return;
                           }
                           userList.addUser(
-                              nameUser: _nameController.text,
-                              majorUser: _majorController.text,
-                              studyAtUser: _studyAtController.text,
-                              imageProfileUser: _imageController.text);
-                          print(userList.allUsers[0].name);
+                              nameUser: nameController.text,
+                              majorUser: majorController.text,
+                              studyAtUser: studyAtController.text,
+                              imageProfileUser: imageController.text);
+
                           Navigator.pop(context);
                         },
                         child: const Text("Submit"))
@@ -116,3 +92,9 @@ class _CustomizeUserScreenState extends State<CustomizeUserScreen> {
     return result;
   }
 }
+
+/*
+
+
+    
+*/

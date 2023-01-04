@@ -21,4 +21,23 @@ class UserProviders with ChangeNotifier {
         imageProfil: imageProfileUser));
     notifyListeners();
   }
+
+  void updateUser(
+      {String nameUser,
+      String majorUser,
+      String studyAtUser,
+      String imageProfileUser,
+      int idx}) {
+    _allUsers[idx] = User(
+        name: nameUser,
+        major: majorUser,
+        studyAt: studyAtUser,
+        imageProfil: imageProfileUser);
+    notifyListeners();
+  }
+
+  void deleteUser(idx) {
+    _allUsers.removeAt(idx);
+    notifyListeners();
+  }
 }

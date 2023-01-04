@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
+import 'package:userorganizer/Screen/EditUserScreen.dart';
 
 class UserListview extends StatelessWidget {
   const UserListview({Key key}) : super(key: key);
@@ -23,17 +24,23 @@ class UserListview extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ListTile(
                         leading: CircleAvatar(
-                          child: Image.network(
-                            userList.allUsers[index].imageProfil,
-                            errorBuilder: (context, error, stackTrace) {
-                              return const Icon(Icons.error);
-                            },
-                          ),
+                          foregroundImage: NetworkImage(
+                              userList.allUsers[index].imageProfil),
                         ),
                         title: Text(userList.allUsers[index].name),
                         subtitle: Text(
                             "${userList.allUsers[index].major} in ${userList.allUsers[index].studyAt}"),
-                        onTap: () {},
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete_outline),
+                          onPressed: (() {
+                            userList.deleteUser(index);
+                          }),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                              EditUserScreen.routeName,
+                              arguments: index);
+                        },
                       );
                     }))),
       ],
