@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
 
 import 'package:userorganizer/Screen/HomeScreen.dart';
+import 'package:userorganizer/Widget/UsersListview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
                 .copyWith(secondary: Colors.teal)),
+        home: const HomeScreen(),
+        routes: {UserListview.routeName: (context) => const UserListview()},
       ),
     );
   }

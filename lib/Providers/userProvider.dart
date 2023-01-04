@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import '../Models/User.dart';
 
 class UserProviders with ChangeNotifier {
-  final List<User> _allUsers = [];
+  List<User> _allUsers = [];
 
   List<User> get allUsers => _allUsers;
 
