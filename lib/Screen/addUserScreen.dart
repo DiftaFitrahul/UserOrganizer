@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
+import 'package:userorganizer/Service/Postdata.dart';
 
 class CustomizeUserScreen extends StatelessWidget {
   const CustomizeUserScreen({Key key}) : super(key: key);
@@ -65,11 +66,12 @@ class CustomizeUserScreen extends StatelessWidget {
                           if (!formKey.currentState.validate()) {
                             return;
                           }
-                          userList.addUser(
-                              nameUser: nameController.text,
-                              majorUser: majorController.text,
-                              studyAtUser: studyAtController.text,
-                              imageProfileUser: imageController.text);
+                          PostData.createUser(
+                              nameController.text,
+                              majorController.text,
+                              studyAtController.text,
+                              imageController.text,
+                              context);
 
                           Navigator.pop(context);
                         },

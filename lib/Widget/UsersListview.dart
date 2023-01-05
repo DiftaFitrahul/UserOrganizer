@@ -27,7 +27,7 @@ class UserListview extends StatelessWidget {
                           foregroundImage: NetworkImage(
                               userList.allUsers[index].imageProfil),
                         ),
-                        title: Text(userList.allUsers[index].name),
+                        title: Text(userList.allUsers[index].name ),
                         subtitle: Text(
                             "${userList.allUsers[index].major} in ${userList.allUsers[index].studyAt}"),
                         trailing: IconButton(

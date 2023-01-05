@@ -10,11 +10,13 @@ class UserProviders with ChangeNotifier {
   int get usersLength => _allUsers.length;
 
   void addUser(
-      {String nameUser,
+      {String idUser,
+        String nameUser,
       String majorUser,
       String studyAtUser,
       String imageProfileUser}) {
     _allUsers.add(User(
+      id: idUser,
         name: nameUser,
         major: majorUser,
         studyAt: studyAtUser,
