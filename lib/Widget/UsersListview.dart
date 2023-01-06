@@ -34,8 +34,8 @@ class UserListview extends StatelessWidget {
                         trailing: IconButton(
                           icon: const Icon(Icons.delete_outline),
                           onPressed: (() {
-                            // DeleteData.deleteUser(
-                            //     value.allUsers[index].id, context);
+                            DeleteData.deleteUser(
+                                value.allUsers[index].id, context);
                           }),
                         ),
                         onTap: () {
