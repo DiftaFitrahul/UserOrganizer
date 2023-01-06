@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
 import 'package:userorganizer/Screen/EditUserScreen.dart';
+import 'package:userorganizer/Service/Deletedata.dart';
 
 class UserListview extends StatelessWidget {
   const UserListview({Key key}) : super(key: key);
@@ -27,13 +28,14 @@ class UserListview extends StatelessWidget {
                           foregroundImage: NetworkImage(
                               userList.allUsers[index].imageProfil),
                         ),
-                        title: Text(userList.allUsers[index].name ),
+                        title: Text(userList.allUsers[index].name),
                         subtitle: Text(
                             "${userList.allUsers[index].major} in ${userList.allUsers[index].studyAt}"),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete_outline),
                           onPressed: (() {
-                            userList.deleteUser(index);
+                            // DeleteData.deleteUser(
+                            //     value.allUsers[index].id, context);
                           }),
                         ),
                         onTap: () {

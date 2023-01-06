@@ -24,7 +24,6 @@ class PostData {
             'studyAt': studyAt,
             'imageProfil': imageProfil,
           }));
-
       if (response.statusCode == 200) {
         userData.addUser(
             idUser: jsonDecode(response.body)['name'].toString(),
@@ -35,8 +34,8 @@ class PostData {
       } else {
         throw Exception('Failed');
       }
-    } on Exception catch (e) {
-      print(e);
+    } catch (e) {
+      return e;
     }
   }
 }

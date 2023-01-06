@@ -13,4 +13,12 @@ class User {
       @required this.major,
       @required this.studyAt,
       @required this.imageProfil});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+        name: json['nama'],
+        major: json['major'],
+        studyAt: json['studyAt'],
+        imageProfil: json['imageProfil']);
+  }
 }

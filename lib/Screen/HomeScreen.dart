@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/userProvider.dart';
-import 'package:userorganizer/Screen/addUserScreen.dart';
-import 'package:userorganizer/Widget/UsersListview.dart';
 
-class HomeScreen extends StatelessWidget {
+import 'package:provider/provider.dart';
+import '../Providers/userProvider.dart';
+import '../Screen/addUserScreen.dart';
+import '../Widget/UsersListview.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Provider.of<UserProviders>(context, listen: false).getUsers();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +34,19 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: GestureDetector(
-        child: Consumer<UserProviders>(
-            builder: (context, value, child) => (userList.allUsers.isEmpty)
-                ? addFirstUser(context)
-                : const UserListview()),
+        child: Consumer<UserProviders>(builder: (context, value, child) {
+          // if (value.isLoading) {
+          //   return SizedBox(
+          //     height: MediaQuery.of(context).size.height / 0.8,
+          //     child: const Center(
+          //       child: CircularProgressIndicator(),
+          //     ),
+          //   );
+          // }
+          return (userList.allUsers.isEmpty)
+              ? addFirstUser(context)
+              : const UserListview();
+        }),
       ),
     );
   }
