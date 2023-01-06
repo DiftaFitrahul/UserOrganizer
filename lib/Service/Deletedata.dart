@@ -16,6 +16,8 @@ class DeleteData {
         });
     if (response.statusCode == 200) {
       userData.deleteUser(id);
+    } else {
+      throw Exception('failed');
     }
   }
 }

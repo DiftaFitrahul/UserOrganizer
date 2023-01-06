@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 import '../Providers/userProvider.dart';
+import '../Service/Updatedata.dart';
 
 class EditUserScreen extends StatelessWidget {
   const EditUserScreen({Key key}) : super(key: key);
@@ -72,12 +73,13 @@ class EditUserScreen extends StatelessWidget {
                           if (!formKey.currentState.validate()) {
                             return;
                           }
-                          userList.updateUser(
-                              nameUser: nameController.text,
-                              majorUser: majorController.text,
-                              studyAtUser: studyAtController.text,
-                              imageProfileUser: imageController.text,
-                              idx: idx);
+                          UpdateData.updateUser(
+                              nameController.text,
+                              majorController.text,
+                              studyAtController.text,
+                              imageController.text,
+                              userList.allUsers[idx].id,
+                              context);
 
                           Navigator.pop(context);
                         },

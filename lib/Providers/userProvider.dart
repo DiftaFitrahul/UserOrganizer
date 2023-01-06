@@ -39,8 +39,9 @@ class UserProviders with ChangeNotifier {
       String majorUser,
       String studyAtUser,
       String imageProfileUser,
-      int idx}) {
-    _allUsers[idx] = User(
+      String idx}) {
+    _allUsers[_allUsers.indexWhere((element) => element.id == idx)] = User(
+        id: idx,
         name: nameUser,
         major: majorUser,
         studyAt: studyAtUser,

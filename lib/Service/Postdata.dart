@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/userProvider.dart';
+import '../Providers/userProvider.dart';
 
 import '../Models/User.dart';
 
