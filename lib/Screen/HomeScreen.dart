@@ -13,11 +13,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   Provider.of<UserProviders>(context, listen: false).getUsers();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<UserProviders>(context, listen: false).getUsers();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +35,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: GestureDetector(
         child: Consumer<UserProviders>(builder: (context, value, child) {
-          // if (value.isLoading) {
-          //   return SizedBox(
-          //     height: MediaQuery.of(context).size.height / 0.8,
-          //     child: const Center(
-          //       child: CircularProgressIndicator(),
-          //     ),
-          //   );
-          // }
+          if (value.isLoading) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 0.8,
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
           return (userList.allUsers.isEmpty)
               ? addFirstUser(context)
               : const UserListview();

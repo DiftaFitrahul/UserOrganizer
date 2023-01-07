@@ -14,7 +14,7 @@ class UserProviders with ChangeNotifier {
 
   Future<void> getUsers() async {
     isLoading = true;
-    GetData.fetchData();
+    _allUsers = await GetData.fetchData();
     isLoading = false;
     notifyListeners();
   }
