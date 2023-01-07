@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -8,9 +9,14 @@ import 'package:userorganizer/Providers/userProvider.dart';
 import 'package:userorganizer/Screen/EditUserScreen.dart';
 import 'package:userorganizer/Service/Deletedata.dart';
 
-class UserListview extends StatelessWidget {
+class UserListview extends StatefulWidget {
   const UserListview({Key key}) : super(key: key);
 
+  @override
+  State<UserListview> createState() => _UserListviewState();
+}
+
+class _UserListviewState extends State<UserListview> {
   @override
   Widget build(BuildContext context) {
     final userList = Provider.of<UserProviders>(context, listen: false);
@@ -24,9 +30,20 @@ class UserListview extends StatelessWidget {
                     itemCount: userList.usersLength,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: CircleAvatar(
-                          foregroundImage: NetworkImage(
-                              userList.allUsers[index].imageProfil),
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: CachedNetworkImage(
+                              fit: BoxFit.cover,
+                              imageUrl: value.allUsers[index].imageProfil,
+                              placeholder: (context, url) =>
+                                  const CircularProgressIndicator(),
+                              errorWidget: (context, url, error) => Image.network(
+                                  'https://www.seekpng.com/png/detail/847-8474751_download-empty-profile.png'),
+                            ),
+                          ),
                         ),
                         title: Text(userList.allUsers[index].name),
                         subtitle: Text(
