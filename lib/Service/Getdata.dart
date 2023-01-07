@@ -24,9 +24,11 @@ class GetData {
         } else {
           dataUsers = [];
         }
+      } else {
+        throw response.statusCode;
       }
     } catch (e) {
-      return e;
+      rethrow;
     }
 
     return dataUsers;

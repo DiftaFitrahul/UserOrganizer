@@ -74,14 +74,28 @@ class EditUserScreen extends StatelessWidget {
                             return;
                           }
                           UpdateData.updateUser(
-                              nameController.text,
-                              majorController.text,
-                              studyAtController.text,
-                              imageController.text,
-                              userList.allUsers[idx].id,
-                              context);
-
-                          Navigator.pop(context);
+                                  nameController.text,
+                                  majorController.text,
+                                  studyAtController.text,
+                                  imageController.text,
+                                  userList.allUsers[idx].id,
+                                  context)
+                              .then((value) {
+                            Navigator.pop(context);
+                          }).catchError((error) => showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                        title: Text('Error $error happen'),
+                                        content:
+                                            const Text("Cannot edit data user"),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text('Okay'))
+                                        ],
+                                      )));
                         },
                         child: const Text("Edit"))
                   ],

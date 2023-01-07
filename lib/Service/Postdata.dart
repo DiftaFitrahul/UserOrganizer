@@ -14,7 +14,7 @@ class PostData {
     try {
       final response = await http.post(
           Uri.parse(
-              'https://userorganizationlearn-default-rtdb.firebaseio.com/users'),
+              'https://userorganizationlearn-default-rtdb.firebaseio.com/users.json'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
           },
