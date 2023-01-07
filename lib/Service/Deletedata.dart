@@ -6,18 +6,22 @@ import 'package:userorganizer/Providers/userProvider.dart';
 import '../Models/User.dart';
 
 class DeleteData {
-  static Future<User> deleteUser(String id, BuildContext context) async {
+  static deleteUser(String id, BuildContext context) async {
     final userData = Provider.of<UserProviders>(context, listen: false);
-    final response = await http.delete(
-        Uri.parse(
-            'https://userorganizationlearn-default-rtdb.firebaseio.com/users/$id.json'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        });
-    if (response.statusCode == 200) {
-      userData.deleteUser(id);
-    } else {
-      throw Exception('failed');
+    try {
+      final response = await http.delete(
+          Uri.parse(
+              'https://userorganizationlearn-default-rtdb.firebaseio.com/users/$id.json'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          });
+      if (response.statusCode == 200) {
+        userData.deleteUser(id);
+      } else {
+        throw response.statusCode;
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 }

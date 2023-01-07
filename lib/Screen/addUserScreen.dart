@@ -13,7 +13,6 @@ class CustomizeUserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    final userList = Provider.of<UserProviders>(context, listen: false);
     TextEditingController nameController = TextEditingController();
     TextEditingController majorController = TextEditingController();
     TextEditingController studyAtController = TextEditingController();

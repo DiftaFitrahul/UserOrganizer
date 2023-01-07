@@ -52,7 +52,21 @@ class _UserListviewState extends State<UserListview> {
                           icon: const Icon(Icons.delete_outline),
                           onPressed: (() {
                             DeleteData.deleteUser(
-                                value.allUsers[index].id, context);
+                                    value.allUsers[index].id, context)
+                                .catchError((error) => showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                          title: Text('Error $error happen'),
+                                          content: const Text(
+                                              "Cannot delete data user"),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Okay'))
+                                          ],
+                                        )));
                           }),
                         ),
                         onTap: () {
