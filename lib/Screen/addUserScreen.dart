@@ -67,13 +67,27 @@ class CustomizeUserScreen extends StatelessWidget {
                             return;
                           }
                           PostData.createUser(
-                              nameController.text,
-                              majorController.text,
-                              studyAtController.text,
-                              imageController.text,
-                              context);
-
-                          Navigator.pop(context);
+                                  nameController.text,
+                                  majorController.text,
+                                  studyAtController.text,
+                                  imageController.text,
+                                  context)
+                              .then((value) {
+                            Navigator.pop(context);
+                          }).catchError((error) => showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                        title: Text('Error $error happen'),
+                                        content:
+                                            const Text("Cannot add data user"),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text('Okay'))
+                                        ],
+                                      )));
                         },
                         child: const Text("Submit"))
                   ],

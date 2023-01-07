@@ -8,13 +8,13 @@ import '../Providers/userProvider.dart';
 import '../Models/User.dart';
 
 class PostData {
-  static Future<User> createUser(String name, String major, String studyAt,
+  static createUser(String name, String major, String studyAt,
       String imageProfil, BuildContext context) async {
     final userData = Provider.of<UserProviders>(context, listen: false);
     try {
       final response = await http.post(
           Uri.parse(
-              'https://userorganizationlearn-default-rtdb.firebaseio.com/users.json'),
+              'https://userorganizationlearn-default-rtdb.firebaseio.com/users'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
           },
@@ -24,6 +24,7 @@ class PostData {
             'studyAt': studyAt,
             'imageProfil': imageProfil,
           }));
+
       if (response.statusCode == 200) {
         userData.addUser(
             idUser: jsonDecode(response.body)['name'].toString(),
@@ -32,10 +33,10 @@ class PostData {
             studyAtUser: studyAt,
             imageProfileUser: imageProfil);
       } else {
-        throw Exception('Failed');
+        throw (response.statusCode);
       }
     } catch (e) {
-      return e;
+      rethrow;
     }
   }
 }
