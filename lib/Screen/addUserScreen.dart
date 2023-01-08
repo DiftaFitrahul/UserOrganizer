@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/userProvider.dart';
-import 'package:userorganizer/Service/Postdata.dart';
+
+import '../Service/Postdata.dart';
 
 class CustomizeUserScreen extends StatelessWidget {
   const CustomizeUserScreen({Key key}) : super(key: key);

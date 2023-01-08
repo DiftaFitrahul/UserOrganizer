@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -36,6 +37,23 @@ class EditUserScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
+                    Consumer<UserProviders>(
+                        builder: (context, value, child) => ClipRRect(
+                              borderRadius: BorderRadius.circular(150),
+                              child: SizedBox(
+                                height: 150,
+                                width: 150,
+                                child: CachedNetworkImage(
+                                  fit: BoxFit.cover,
+                                  imageUrl: value.allUsers[idx].imageProfil,
+                                  placeholder: (context, url) =>
+                                      const CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      Image.network(
+                                          'https://www.seekpng.com/png/detail/847-8474751_download-empty-profile.png'),
+                                ),
+                              ),
+                            )),
                     TextFormField(
                       controller: nameController,
                       decoration: const InputDecoration(hintText: 'Full name'),
