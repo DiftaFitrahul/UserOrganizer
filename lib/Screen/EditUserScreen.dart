@@ -9,13 +9,13 @@ import '../Providers/userProvider.dart';
 import '../Service/Updatedata.dart';
 
 class EditUserScreen extends StatelessWidget {
-  const EditUserScreen({Key key}) : super(key: key);
+  const EditUserScreen({Key? key}) : super(key: key);
   static const routeName = '/EditUser-screen';
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    final idx = ModalRoute.of(context).settings.arguments as int;
+    final idx = ModalRoute.of(context)?.settings.arguments as int;
     final userList = Provider.of<UserProviders>(context, listen: false);
     TextEditingController nameController =
         TextEditingController(text: userList.allUsers[idx].name);
@@ -88,7 +88,7 @@ class EditUserScreen extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          if (!formKey.currentState.validate()) {
+                          if (!formKey.currentState!.validate()) {
                             return;
                           }
                           UpdateData.updateUser(
@@ -122,8 +122,8 @@ class EditUserScreen extends StatelessWidget {
     );
   }
 
-  String validatorInput(value, inputName) {
-    String result;
+  String? validatorInput(value, inputName) {
+    String? result;
     if (value.isNotEmpty && value.length > 2) {
       result = null;
     } else if (value.isNotEmpty && value.length <= 2) {

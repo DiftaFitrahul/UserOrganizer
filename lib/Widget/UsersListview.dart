@@ -10,7 +10,7 @@ import 'package:userorganizer/Screen/EditUserScreen.dart';
 import 'package:userorganizer/Service/Deletedata.dart';
 
 class UserListview extends StatefulWidget {
-  const UserListview({Key key}) : super(key: key);
+  const UserListview({Key? key}) : super(key: key);
 
   @override
   State<UserListview> createState() => _UserListviewState();

@@ -6,7 +6,7 @@ import '../Screen/addUserScreen.dart';
 import '../Widget/UsersListview.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

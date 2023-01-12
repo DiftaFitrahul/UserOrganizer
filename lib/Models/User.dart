@@ -8,10 +8,10 @@ class User {
   final String imageProfil;
 
   User(
-      {@required this.id,
-      @required this.name,
-      @required this.major,
-      @required this.studyAt,
-      @required this.imageProfil});
+      {required this.id,
+      required this.name,
+      required this.major,
+      required this.studyAt,
+      required this.imageProfil});
 
 }

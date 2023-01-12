@@ -20,11 +20,11 @@ class UserProviders with ChangeNotifier {
   }
 
   void addUser(
-      {String idUser,
-      String nameUser,
-      String majorUser,
-      String studyAtUser,
-      String imageProfileUser}) {
+      {required String idUser,
+      required String nameUser,
+      required String majorUser,
+      required String studyAtUser,
+      required String imageProfileUser}) {
     _allUsers.add(User(
         id: idUser,
         name: nameUser,
@@ -35,11 +35,11 @@ class UserProviders with ChangeNotifier {
   }
 
   void updateUser(
-      {String nameUser,
-      String majorUser,
-      String studyAtUser,
-      String imageProfileUser,
-      String idx}) {
+      {required String nameUser,
+      required String majorUser,
+      required String studyAtUser,
+      required String imageProfileUser,
+      required String idx}) {
     _allUsers[_allUsers.indexWhere((element) => element.id == idx)] = User(
         id: idx,
         name: nameUser,

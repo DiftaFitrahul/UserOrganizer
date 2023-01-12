@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../Service/Postdata.dart';
 
 class CustomizeUserScreen extends StatelessWidget {
-  const CustomizeUserScreen({Key key}) : super(key: key);
+  const CustomizeUserScreen({Key? key}) : super(key: key);
   static const routeName = '/User-list';
 
   @override
@@ -58,7 +58,7 @@ class CustomizeUserScreen extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          if (!formKey.currentState.validate()) {
+                          if (!formKey.currentState!.validate()) {
                             return;
                           }
                           PostData.createUser(
@@ -91,8 +91,8 @@ class CustomizeUserScreen extends StatelessWidget {
     );
   }
 
-  String validatorInput(value, inputName) {
-    String result;
+  String? validatorInput(value, inputName) {
+    String? result;
     if (value.isNotEmpty && value.length > 2) {
       result = null;
     } else if (value.isNotEmpty && value.length <= 2) {
