@@ -13,10 +13,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Future<void> data;
+
   @override
   void initState() {
     super.initState();
-    Provider.of<UserProviders>(context, listen: false).getUsers();
+    data = Provider.of<UserProviders>(context, listen: false).getUsers();
   }
 
   @override
@@ -34,20 +36,27 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: GestureDetector(
-        child: Consumer<UserProviders>(builder: (context, value, child) {
-          if (value.isLoading) {
+          child: FutureBuilder(
+        future: data,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return SizedBox(
               height: MediaQuery.of(context).size.height / 0.8,
               child: const Center(
                 child: CircularProgressIndicator(),
               ),
             );
+          } else if (snapshot.hasError) {
+            return const Center(
+              child: Icon(Icons.error),
+            );
+          } else {
+            return (userList.allUsers.isEmpty)
+                ? addFirstUser(context)
+                : const UserListview();
           }
-          return (userList.allUsers.isEmpty)
-              ? addFirstUser(context)
-              : const UserListview();
-        }),
-      ),
+        },
+      )),
     );
   }
 
@@ -70,3 +79,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+/*
+
+ 
+
+
+
+*/

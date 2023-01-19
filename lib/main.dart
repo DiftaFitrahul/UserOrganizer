@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
 import 'package:userorganizer/Screen/EditUserScreen.dart';
+import 'package:userorganizer/Screen/LoginPage.dart';
 import 'package:userorganizer/Screen/addUserScreen.dart';
 
 import 'package:userorganizer/Screen/HomeScreen.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
                 .copyWith(secondary: Colors.teal)),
-        home: const HomeScreen(),
+        home: const LoginScreen(),
         routes: {
           CustomizeUserScreen.routeName: (context) =>
               const CustomizeUserScreen(),

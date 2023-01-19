@@ -13,9 +13,13 @@ class UserProviders with ChangeNotifier {
   bool isLoading = false;
 
   Future<void> getUsers() async {
-    isLoading = true;
-    _allUsers = await GetData.fetchData();
-    isLoading = false;
+    try {
+      isLoading = true;
+      _allUsers = await GetData.fetchData();
+      isLoading = false;
+    } catch (e) {
+      rethrow;
+    }
     notifyListeners();
   }
 
