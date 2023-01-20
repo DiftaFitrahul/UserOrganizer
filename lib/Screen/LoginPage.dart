@@ -25,8 +25,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<String?> _authUser(LoginData data) {
     debugPrint('Name: ${data.name}, Password: ${data.password}');
-    return Future.delayed(loginTime).then((_) {
-     
+    return Future.delayed(loginTime).then((_) async {
+      try {
+        await Provider.of<Authentication>(context, listen: false)
+            .signIn(data.name, data.password);
+      } catch (e) {
+        return e.toString();
+      }
+
       // if (!users.containsKey(data.name)) {
       //   return 'User not exists';
       // }
@@ -40,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<String?> _signupUser(SignupData data) {
     debugPrint('Signup Name: ${data.name}, Password: ${data.password}');
     return Future.delayed(loginTime).then((_) {
-       Provider.of<Authentication>(context, listen: false)
+      Provider.of<Authentication>(context, listen: false)
           .signup(data.name, data.password);
       return null;
     });

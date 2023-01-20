@@ -12,18 +12,15 @@ class GetData {
           'https://userorganizationlearn-default-rtdb.firebaseio.com/users.json'));
       if (response.statusCode == 200) {
         final users = jsonDecode(response.body) as Map<String, dynamic>;
-        if (users != null) {
-          users.forEach((key, value) {
-            dataUsers.add(User(
-                id: key,
-                name: value['name'],
-                major: value['major'],
-                studyAt: value['studyAt'],
-                imageProfil: value['imageProfil']));
-          });
-        } else {
-          dataUsers = [];
-        }
+
+        users.forEach((key, value) {
+          dataUsers.add(User(
+              id: key,
+              name: value['name'],
+              major: value['major'],
+              studyAt: value['studyAt'],
+              imageProfil: value['imageProfil']));
+        });
       } else {
         throw response.statusCode;
       }
