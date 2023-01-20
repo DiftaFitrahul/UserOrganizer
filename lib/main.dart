@@ -24,18 +24,20 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => UserProviders()),
         ChangeNotifierProvider(create: (context) => Authentication())
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'List of User',
-        theme: ThemeData(
-            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
-                .copyWith(secondary: Colors.teal)),
-        home: const LoginScreen(),
-        routes: {
-          CustomizeUserScreen.routeName: (context) =>
-              const CustomizeUserScreen(),
-          EditUserScreen.routeName: (context) => const EditUserScreen()
-        },
+      child: Consumer<Authentication>(
+        builder: (context, auth, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'List of User',
+          theme: ThemeData(
+              colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+                  .copyWith(secondary: Colors.teal)),
+          home: auth.isAuth ? const HomeScreen() : const LoginScreen(),
+          routes: {
+            CustomizeUserScreen.routeName: (context) =>
+                const CustomizeUserScreen(),
+            EditUserScreen.routeName: (context) => const EditUserScreen()
+          },
+        ),
       ),
     );
   }

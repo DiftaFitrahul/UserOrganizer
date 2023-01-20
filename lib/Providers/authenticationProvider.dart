@@ -4,6 +4,23 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 
 class Authentication with ChangeNotifier {
+  String? _idToken, userId;
+  DateTime? _expiryDate;
+
+  bool get isAuth {
+    return token != null;
+  }
+
+  String? get token {
+    if (_idToken != null &&
+        _expiryDate != null &&
+        _expiryDate!.isAfter(DateTime.now())) {
+      return _idToken;
+    } else {
+      return null;
+    }
+  }
+
   Future<void> signup(String? email, String? password) async {
     try {
       final response = await http.post(
@@ -14,14 +31,22 @@ class Authentication with ChangeNotifier {
             "password": password,
             "returnSecureToken": true
           }));
+
       final responseData = jsonDecode(response.body);
+
       if (responseData['error'] != null) {
         throw responseData['error']['message'];
       }
+
+      _idToken = responseData['idToken'];
+      userId = responseData['localId'];
+      _expiryDate = DateTime.now()
+          .add(Duration(seconds: int.parse(responseData['expiresIn'])));
     } catch (e) {
       rethrow;
     }
-    // print(response.body);
+
+    notifyListeners();
   }
 
   Future<void> signIn(String? email, String? password) async {
@@ -35,12 +60,18 @@ class Authentication with ChangeNotifier {
             "returnSecureToken": true
           }));
       final responseData = jsonDecode(response.body);
+      _idToken = responseData['idToken'];
       if (responseData['error'] != null) {
-        print(responseData['error']['message']);
         throw responseData['error']['message'];
       }
+
+      _idToken = responseData['idToken'];
+      userId = responseData['localId'];
+      _expiryDate = DateTime.now()
+          .add(Duration(seconds: int.parse(responseData['expiresIn'])));
     } catch (e) {
       rethrow;
     }
+    notifyListeners();
   }
 }
