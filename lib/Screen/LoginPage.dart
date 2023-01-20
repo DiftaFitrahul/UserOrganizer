@@ -45,9 +45,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<String?> _signupUser(SignupData data) {
     debugPrint('Signup Name: ${data.name}, Password: ${data.password}');
-    return Future.delayed(loginTime).then((_) {
-      Provider.of<Authentication>(context, listen: false)
-          .signup(data.name, data.password);
+    return Future.delayed(loginTime).then((_) async {
+      try {
+        await Provider.of<Authentication>(context, listen: false)
+            .signup(data.name, data.password);
+      } catch (e) {
+        return e.toString();
+      }
       return null;
     });
   }

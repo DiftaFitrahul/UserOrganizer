@@ -5,16 +5,22 @@ import 'package:http/http.dart' as http;
 
 class Authentication with ChangeNotifier {
   Future<void> signup(String? email, String? password) async {
-    final response = await http.post(
-        Uri.parse(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCCaGIERgp8bjWdk2u69Rr7Scrxg9CAR0c'),
-        body: jsonEncode(<String, dynamic>{
-          "email": email,
-          "password": password,
-          "returnSecureToken": true
-        }));
-    final responseData = jsonDecode(response.body);
-    print(responseData["error"]);
+    try {
+      final response = await http.post(
+          Uri.parse(
+              'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCCaGIERgp8bjWdk2u69Rr7Scrxg9CAR0c'),
+          body: jsonEncode(<String, dynamic>{
+            "email": email,
+            "password": password,
+            "returnSecureToken": true
+          }));
+      final responseData = jsonDecode(response.body);
+      if (responseData['error'] != null) {
+        throw responseData['error']['message'];
+      }
+    } catch (e) {
+      rethrow;
+    }
     // print(response.body);
   }
 
