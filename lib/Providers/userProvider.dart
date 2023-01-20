@@ -10,13 +10,9 @@ class UserProviders with ChangeNotifier {
 
   int get usersLength => _allUsers.length;
 
-  bool isLoading = false;
-
   Future<void> getUsers() async {
     try {
-      isLoading = true;
       _allUsers = await GetData.fetchData();
-      isLoading = false;
     } catch (e) {
       rethrow;
     }

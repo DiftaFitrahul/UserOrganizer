@@ -47,8 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           } else if (snapshot.hasError) {
-            return const Center(
-              child: Icon(Icons.error),
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.error),
+                  Text(snapshot.error.toString())
+                ],
+              ),
             );
           } else {
             return (userList.allUsers.isEmpty)
