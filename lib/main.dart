@@ -8,6 +8,8 @@ import 'package:userorganizer/Screen/addUserScreen.dart';
 import 'package:userorganizer/Screen/HomeScreen.dart';
 import 'package:userorganizer/Widget/UsersListview.dart';
 
+import 'Providers/authenticationProvider.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,7 +20,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => UserProviders())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => UserProviders()),
+        ChangeNotifierProvider(create: (context) => Authentication())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'List of User',
