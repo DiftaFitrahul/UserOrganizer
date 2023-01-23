@@ -17,7 +17,8 @@ class PostData {
           Uri.parse(
               'https://userorganizationlearn-default-rtdb.firebaseio.com/users.json?auth=$token'),
           headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8'
+            'Content-Type': 'application/json; charset=UTF-8',
+            //'token' : token do this if we use another backend like node.js or golang or anything else
           },
           body: jsonEncode(<String, dynamic>{
             'name': name,
