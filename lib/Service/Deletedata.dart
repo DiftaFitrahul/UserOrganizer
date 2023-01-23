@@ -1,18 +1,16 @@
+import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
+import 'package:userorganizer/Service/Product.dart';
 
 import '../Models/User.dart';
 
-class DeleteData with ChangeNotifier{
-  String token = "";
-  
-  void updateData(updatetoken) {
-    token = updatetoken;
-    notifyListeners();
-  }
+class DeleteData {
   deleteUser(String id, BuildContext context) async {
+    String token = Provider.of<Product>(context).token;
     final userData = Provider.of<UserProviders>(context, listen: false);
     try {
       final response = await http.delete(
@@ -30,5 +28,4 @@ class DeleteData with ChangeNotifier{
       rethrow;
     }
   }
-  
 }

@@ -2,18 +2,17 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 import '../Models/User.dart';
 import 'package:http/http.dart' as http;
 
-class GetData with ChangeNotifier{
-  String token = "";
+import 'Product.dart';
 
-  void updateData(updatetoken) {
-    token = updatetoken;
-    notifyListeners();
-  }
-  Future<List<User>> fetchData() async {
+class GetData{
+  
+  Future<List<User>> fetchData(BuildContext context) async {
+    String token = Provider.of<Product>(context).token;
     List<User> dataUsers = [];
     try {
       final response = await http.get(Uri.parse(

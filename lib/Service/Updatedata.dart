@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
+import 'package:userorganizer/Service/Product.dart';
 
 import '../Models/User.dart';
 
@@ -16,6 +17,7 @@ class UpdateData with ChangeNotifier {
 
   updateUser(String name, String major, String studyAt, String imageProfil,
       String id, BuildContext context) async {
+    String token = Provider.of<Product>(context).token;
     final userData = Provider.of<UserProviders>(context, listen: false);
     try {
       final response = await http.put(

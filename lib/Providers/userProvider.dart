@@ -11,9 +11,9 @@ class UserProviders with ChangeNotifier {
 
   int get usersLength => _allUsers.length;
 
-  Future<void> getUsers() async {
+  Future<void> getUsers(BuildContext context) async {
     try {
-      _allUsers = await data.fetchData();
+      _allUsers = await data.fetchData(context);
     } catch (e) {
       rethrow;
     }

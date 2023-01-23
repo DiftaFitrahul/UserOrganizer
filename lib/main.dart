@@ -6,9 +6,13 @@ import 'package:userorganizer/Screen/LoginPage.dart';
 import 'package:userorganizer/Screen/addUserScreen.dart';
 
 import 'package:userorganizer/Screen/HomeScreen.dart';
+import 'package:userorganizer/Service/Getdata.dart';
+import 'package:userorganizer/Service/Postdata.dart';
+import 'package:userorganizer/Service/Updatedata.dart';
 import 'package:userorganizer/Widget/UsersListview.dart';
 
 import 'Providers/authenticationProvider.dart';
+import 'Service/Deletedata.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => UserProviders()),
-        ChangeNotifierProvider(create: (context) => Authentication())
+        ChangeNotifierProvider(create: (context) => Authentication()),
       ],
       child: Consumer<Authentication>(
         builder: (context, auth, child) => MaterialApp(

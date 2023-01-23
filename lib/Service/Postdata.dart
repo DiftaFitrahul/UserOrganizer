@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../Providers/userProvider.dart';
 
 import '../Models/User.dart';
+import 'Product.dart';
 
 class PostData with ChangeNotifier {
   String token = '';
@@ -15,6 +16,7 @@ class PostData with ChangeNotifier {
   }
   createUser(String name, String major, String studyAt, String imageProfil,
       BuildContext context) async {
+        String token = Provider.of<Product>(context).token;
     final userData = Provider.of<UserProviders>(context, listen: false);
     try {
       final response = await http.post(

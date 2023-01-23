@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    data = Provider.of<UserProviders>(context, listen: false).getUsers();
+    data = Provider.of<UserProviders>(context, listen: false).getUsers(context);
   }
 
   @override
