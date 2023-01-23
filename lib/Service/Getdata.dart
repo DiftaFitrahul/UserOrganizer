@@ -5,11 +5,12 @@ import '../Models/User.dart';
 import 'package:http/http.dart' as http;
 
 class GetData {
-  static Future<List<User>> fetchData() async {
+  String token = "";
+  Future<List<User>> fetchData() async {
     List<User> dataUsers = [];
     try {
       final response = await http.get(Uri.parse(
-          'https://userorganizationlearn-default-rtdb.firebaseio.com/users.json'));
+          'https://userorganizationlearn-default-rtdb.firebaseio.com/users.json?auth=$token'));
       if (response.statusCode == 200) {
         final users = jsonDecode(response.body) as Map<String, dynamic>;
 

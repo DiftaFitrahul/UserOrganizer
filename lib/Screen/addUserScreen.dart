@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import '../Service/Postdata.dart';
 
 class CustomizeUserScreen extends StatelessWidget {
-  const CustomizeUserScreen({Key? key}) : super(key: key);
+  CustomizeUserScreen({Key? key}) : super(key: key);
   static const routeName = '/User-list';
+  PostData postData = PostData();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,7 @@ class CustomizeUserScreen extends StatelessWidget {
                           if (!formKey.currentState!.validate()) {
                             return;
                           }
-                          PostData.createUser(
+                          postData.createUser(
                                   nameController.text,
                                   majorController.text,
                                   studyAtController.text,

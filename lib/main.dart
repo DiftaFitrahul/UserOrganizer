@@ -33,9 +33,8 @@ class MyApp extends StatelessWidget {
                   .copyWith(secondary: Colors.teal)),
           home: auth.isAuth ? const HomeScreen() : const LoginScreen(),
           routes: {
-            CustomizeUserScreen.routeName: (context) =>
-                const CustomizeUserScreen(),
-            EditUserScreen.routeName: (context) => const EditUserScreen()
+            CustomizeUserScreen.routeName: (context) => CustomizeUserScreen(),
+            EditUserScreen.routeName: (context) => EditUserScreen()
           },
         ),
       ),

@@ -17,6 +17,7 @@ class UserListview extends StatefulWidget {
 }
 
 class _UserListviewState extends State<UserListview> {
+  DeleteData delete = DeleteData();
   @override
   Widget build(BuildContext context) {
     final userList = Provider.of<UserProviders>(context, listen: false);
@@ -51,8 +52,8 @@ class _UserListviewState extends State<UserListview> {
                         trailing: IconButton(
                           icon: const Icon(Icons.delete_outline),
                           onPressed: (() {
-                            DeleteData.deleteUser(
-                                    value.allUsers[index].id, context)
+                            delete
+                                .deleteUser(value.allUsers[index].id, context)
                                 .catchError((error) => showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(

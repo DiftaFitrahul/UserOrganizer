@@ -4,6 +4,7 @@ import 'package:userorganizer/Service/Getdata.dart';
 import '../Models/User.dart';
 
 class UserProviders with ChangeNotifier {
+  GetData data = GetData();
   List<User> _allUsers = [];
 
   List<User> get allUsers => _allUsers;
@@ -12,7 +13,7 @@ class UserProviders with ChangeNotifier {
 
   Future<void> getUsers() async {
     try {
-      _allUsers = await GetData.fetchData();
+      _allUsers = await data.fetchData();
     } catch (e) {
       rethrow;
     }

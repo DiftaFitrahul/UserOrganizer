@@ -8,13 +8,14 @@ import 'package:userorganizer/Providers/userProvider.dart';
 import '../Models/User.dart';
 
 class UpdateData {
-  static updateUser(String name, String major, String studyAt,
-      String imageProfil, String id, BuildContext context) async {
+  String token = '';
+  updateUser(String name, String major, String studyAt, String imageProfil,
+      String id, BuildContext context) async {
     final userData = Provider.of<UserProviders>(context, listen: false);
     try {
       final response = await http.put(
           Uri.parse(
-              'https://userorganizationlearn-default-rtdb.firebaseio.com/users/$id.json'),
+              'https://userorganizationlearn-default-rtdb.firebaseio.com/users/$id.json?auth=$token'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
           },
