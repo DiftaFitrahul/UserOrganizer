@@ -5,8 +5,13 @@ import 'package:userorganizer/Providers/userProvider.dart';
 
 import '../Models/User.dart';
 
-class DeleteData {
+class DeleteData with ChangeNotifier{
   String token = "";
+  
+  void updateData(updatetoken) {
+    token = updatetoken;
+    notifyListeners();
+  }
   deleteUser(String id, BuildContext context) async {
     final userData = Provider.of<UserProviders>(context, listen: false);
     try {
@@ -25,4 +30,5 @@ class DeleteData {
       rethrow;
     }
   }
+  
 }

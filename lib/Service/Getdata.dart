@@ -1,11 +1,18 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
+
 import '../Models/User.dart';
 import 'package:http/http.dart' as http;
 
-class GetData {
+class GetData with ChangeNotifier{
   String token = "";
+
+  void updateData(updatetoken) {
+    token = updatetoken;
+    notifyListeners();
+  }
   Future<List<User>> fetchData() async {
     List<User> dataUsers = [];
     try {

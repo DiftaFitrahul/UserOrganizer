@@ -7,8 +7,13 @@ import 'package:userorganizer/Providers/userProvider.dart';
 
 import '../Models/User.dart';
 
-class UpdateData {
+class UpdateData with ChangeNotifier {
   String token = '';
+  void updateData(updatetoken) {
+    token = updatetoken;
+    notifyListeners();
+  }
+
   updateUser(String name, String major, String studyAt, String imageProfil,
       String id, BuildContext context) async {
     final userData = Provider.of<UserProviders>(context, listen: false);

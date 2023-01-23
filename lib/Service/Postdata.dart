@@ -7,8 +7,12 @@ import '../Providers/userProvider.dart';
 
 import '../Models/User.dart';
 
-class PostData {
+class PostData with ChangeNotifier {
   String token = '';
+  void updateData(updatetoken) {
+    token = updatetoken;
+    notifyListeners();
+  }
   createUser(String name, String major, String studyAt, String imageProfil,
       BuildContext context) async {
     final userData = Provider.of<UserProviders>(context, listen: false);
