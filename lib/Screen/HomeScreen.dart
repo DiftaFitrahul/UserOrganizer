@@ -36,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final userList = Provider.of<UserProviders>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text("List of User"),
@@ -70,9 +69,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           } else {
-            return (userList.allUsers.isEmpty)
-                ? addFirstUser(context)
-                : const UserListview();
+            return Consumer<UserProviders>(
+                builder: (context, userList, child) =>
+                    (userList.allUsers.isEmpty)
+                        ? addFirstUser(context)
+                        : const UserListview());
           }
         },
       )),

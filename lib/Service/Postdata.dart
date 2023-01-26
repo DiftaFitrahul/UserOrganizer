@@ -6,18 +6,11 @@ import 'package:provider/provider.dart';
 import '../Providers/authenticationProvider.dart';
 import '../Providers/userProvider.dart';
 
-import '../Models/User.dart';
-
 class PostData with ChangeNotifier {
-  String token = '';
-  void updateData(updatetoken) {
-    token = updatetoken;
-    notifyListeners();
-  }
-
   createUser(String name, String major, String studyAt, String imageProfil,
       BuildContext context) async {
     final token = Provider.of<Authentication>(context, listen: false).token;
+    final userId = Provider.of<Authentication>(context, listen: false).userId;
     final userData = Provider.of<UserProviders>(context, listen: false);
     try {
       final response = await http.post(
@@ -32,8 +25,9 @@ class PostData with ChangeNotifier {
             'major': major,
             'studyAt': studyAt,
             'imageProfil': imageProfil,
+            'userId': userId,
           }));
-
+      print(response.statusCode);
       if (response.statusCode == 200) {
         userData.addUser(
             idUser: jsonDecode(response.body)['name'].toString(),

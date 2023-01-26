@@ -4,16 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
-
-import '../Models/User.dart';
 import '../Providers/authenticationProvider.dart';
 
 class UpdateData with ChangeNotifier {
-  String token = '';
-  void updateData(updatetoken) {
-    token = updatetoken;
-    notifyListeners();
-  }
 
   updateUser(String name, String major, String studyAt, String imageProfil,
       String id, BuildContext context) async {

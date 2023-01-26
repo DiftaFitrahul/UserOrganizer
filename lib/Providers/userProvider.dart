@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 import 'package:userorganizer/Service/Getdata.dart';
-import 'package:userorganizer/Service/Updatedata.dart';
 
 import '../Models/User.dart';
 

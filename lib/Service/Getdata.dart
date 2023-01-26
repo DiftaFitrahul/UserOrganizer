@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -10,11 +9,12 @@ import 'package:http/http.dart' as http;
 
 class GetData with ChangeNotifier {
   Future<List<User>> fetchData(BuildContext context) async {
-    final token = Provider.of<Authentication>(context, listen: false).token;
+    final token = Provider.of<Authentication>(context).token;
+    final userId = Provider.of<Authentication>(context, listen: false).userId;
     List<User> dataUsers = [];
     try {
       final response = await http.get(Uri.parse(
-          'https://userorganizationlearn-default-rtdb.firebaseio.com/users.json?auth=$token'));
+          'https://userorganizationlearn-default-rtdb.firebaseio.com/users.json?auth=$token&orderBy="userId"&equalTo="$userId"'));
       if (response.statusCode == 200) {
         final users = jsonDecode(response.body) as Map<String, dynamic>;
 

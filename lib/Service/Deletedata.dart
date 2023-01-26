@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
 
-import '../Models/User.dart';
 import '../Providers/authenticationProvider.dart';
 
 class DeleteData with ChangeNotifier {
