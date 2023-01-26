@@ -3,16 +3,14 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:userorganizer/Providers/authenticationProvider.dart';
 
 import '../Models/User.dart';
 import 'package:http/http.dart' as http;
 
-import 'Product.dart';
-
-class GetData{
-  
+class GetData with ChangeNotifier {
   Future<List<User>> fetchData(BuildContext context) async {
-    String token = Provider.of<Product>(context).token;
+    final token = Provider.of<Authentication>(context, listen: false).token;
     List<User> dataUsers = [];
     try {
       final response = await http.get(Uri.parse(

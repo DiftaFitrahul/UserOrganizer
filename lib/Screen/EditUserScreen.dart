@@ -9,7 +9,7 @@ import '../Providers/userProvider.dart';
 import '../Service/Updatedata.dart';
 
 class EditUserScreen extends StatelessWidget {
-   EditUserScreen({Key? key}) : super(key: key);
+  EditUserScreen({Key? key}) : super(key: key);
   static const routeName = '/EditUser-screen';
   UpdateData updateData = UpdateData();
 

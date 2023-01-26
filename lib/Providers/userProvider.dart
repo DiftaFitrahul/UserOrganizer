@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:userorganizer/Service/Getdata.dart';
+import 'package:userorganizer/Service/Updatedata.dart';
 
 import '../Models/User.dart';
 
 class UserProviders with ChangeNotifier {
-  GetData data = GetData();
   List<User> _allUsers = [];
+  GetData getdata = GetData();
 
   List<User> get allUsers => _allUsers;
 
@@ -13,7 +15,7 @@ class UserProviders with ChangeNotifier {
 
   Future<void> getUsers(BuildContext context) async {
     try {
-      _allUsers = await data.fetchData(context);
+      _allUsers = await getdata.fetchData(context);
     } catch (e) {
       rethrow;
     }

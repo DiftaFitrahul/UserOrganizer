@@ -1,16 +1,14 @@
-import 'dart:js';
-
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:userorganizer/Providers/userProvider.dart';
-import 'package:userorganizer/Service/Product.dart';
 
 import '../Models/User.dart';
+import '../Providers/authenticationProvider.dart';
 
-class DeleteData {
+class DeleteData with ChangeNotifier {
   deleteUser(String id, BuildContext context) async {
-    String token = Provider.of<Product>(context).token;
+    final token = Provider.of<Authentication>(context, listen: false).token;
     final userData = Provider.of<UserProviders>(context, listen: false);
     try {
       final response = await http.delete(

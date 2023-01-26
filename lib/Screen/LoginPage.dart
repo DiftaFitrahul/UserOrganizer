@@ -74,9 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
       onLogin: _authUser,
       onSignup: _signupUser,
       onSubmitAnimationCompleted: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        ));
+        // Navigator.of(context).pushReplacement(MaterialPageRoute(
+        //   builder: (context) => const HomeScreen(),
+        // ));
+        Provider.of<Authentication>(context, listen: false).tempData();
       },
       onRecoverPassword: _recoverPassword,
     );

@@ -62,7 +62,8 @@ class CustomizeUserScreen extends StatelessWidget {
                           if (!formKey.currentState!.validate()) {
                             return;
                           }
-                          postData.createUser(
+                          postData
+                              .createUser(
                                   nameController.text,
                                   majorController.text,
                                   studyAtController.text,

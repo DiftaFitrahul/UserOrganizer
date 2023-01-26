@@ -14,11 +14,24 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<void> data;
+  bool isInit = true;
+  bool isLoading = false;
 
   @override
-  void initState() {
-    super.initState();
-    data = Provider.of<UserProviders>(context, listen: false).getUsers(context);
+  void didChangeDependencies() {
+    if (isInit) {
+      isLoading = true;
+      data = Provider.of<UserProviders>(context, listen: false)
+          .getUsers(context)
+          .then((value) {
+        setState(() {
+          isLoading = false;
+        });
+      });
+
+      isInit = false;
+    }
+    super.didChangeDependencies();
   }
 
   @override

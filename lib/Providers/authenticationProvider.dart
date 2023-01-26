@@ -7,6 +7,16 @@ class Authentication with ChangeNotifier {
   String? _idToken, userId;
   DateTime? _expiryDate;
 
+  String? _tempidToken, tempuserId;
+  DateTime? _tempexpiryDate;
+
+  void tempData() {
+    _idToken = _tempidToken;
+    _expiryDate = _tempexpiryDate;
+    userId = tempuserId;
+    notifyListeners();
+  }
+
   bool get isAuth {
     return token != null;
   }
@@ -38,9 +48,9 @@ class Authentication with ChangeNotifier {
         throw responseData['error']['message'];
       }
 
-      _idToken = responseData['idToken'];
-      userId = responseData['localId'];
-      _expiryDate = DateTime.now()
+      _tempidToken = responseData['idToken'];
+      tempuserId = responseData['localId'];
+      _tempexpiryDate = DateTime.now()
           .add(Duration(seconds: int.parse(responseData['expiresIn'])));
     } catch (e) {
       rethrow;
@@ -60,14 +70,13 @@ class Authentication with ChangeNotifier {
             "returnSecureToken": true
           }));
       final responseData = jsonDecode(response.body);
-      _idToken = responseData['idToken'];
       if (responseData['error'] != null) {
         throw responseData['error']['message'];
       }
 
-      _idToken = responseData['idToken'];
-      userId = responseData['localId'];
-      _expiryDate = DateTime.now()
+      _tempidToken = responseData['idToken'];
+      tempuserId = responseData['localId'];
+      _tempexpiryDate = DateTime.now()
           .add(Duration(seconds: int.parse(responseData['expiresIn'])));
     } catch (e) {
       rethrow;
