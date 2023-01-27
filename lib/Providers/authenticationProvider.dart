@@ -83,4 +83,11 @@ class Authentication with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void logout() {
+    _idToken = null;
+    userId = null;
+    _expiryDate = null;
+    notifyListeners();
+  }
 }

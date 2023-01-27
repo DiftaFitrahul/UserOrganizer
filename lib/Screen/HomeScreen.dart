@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import '../Providers/authenticationProvider.dart';
 import '../Providers/userProvider.dart';
 import '../Screen/addUserScreen.dart';
 import '../Widget/UsersListview.dart';
@@ -38,7 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed:(){}, icon: const Icon(Icons.logout)),
+        leading: IconButton(
+            onPressed: () {
+              Provider.of<Authentication>(context, listen: false).logout();
+            },
+            icon: const Icon(Icons.logout)),
         title: const Text("List of User"),
         actions: [
           IconButton(
