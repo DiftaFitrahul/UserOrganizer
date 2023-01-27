@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Service/Postdata.dart';
+import '../Service/post_data.dart';
 
 class CustomizeUserScreen extends StatelessWidget {
   CustomizeUserScreen({Key? key}) : super(key: key);

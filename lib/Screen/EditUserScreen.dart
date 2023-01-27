@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Providers/userProvider.dart';
-import '../Service/Updatedata.dart';
+import '../Service/update_data.dart';
 
 class EditUserScreen extends StatelessWidget {
   EditUserScreen({Key? key}) : super(key: key);
