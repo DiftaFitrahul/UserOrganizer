@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/authenticationProvider.dart';
+import 'package:userorganizer/Providers/authentication_provider.dart';
 
-import '../Models/User.dart';
+import '../Models/user_model.dart';
 import 'package:http/http.dart' as http;
 
 class GetData with ChangeNotifier {

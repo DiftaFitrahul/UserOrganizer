@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:userorganizer/Service/Getdata.dart';
+import 'package:userorganizer/Service/get_data.dart';
 
-import '../Models/User.dart';
+import '../Models/user_model.dart';
 
 class UserProviders with ChangeNotifier {
   List<User> _allUsers = [];

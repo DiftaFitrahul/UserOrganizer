@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/authenticationProvider.dart';
+import 'package:userorganizer/Providers/authentication_provider.dart';
 
 const users = {
   'dribbble@gmail.com': '12345',
@@ -56,6 +56,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<String?> _recoverPassword(String name) {
     debugPrint('Name: $name');
     return Future.delayed(loginTime).then((_) {
+      return null;
+    
       // if (!users.containsKey(name)) {
       //   return 'User not exists';
       // }

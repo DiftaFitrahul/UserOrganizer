@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class User {
   final String id;
   final String name;
@@ -13,5 +11,4 @@ class User {
       required this.major,
       required this.studyAt,
       required this.imageProfil});
-
 }

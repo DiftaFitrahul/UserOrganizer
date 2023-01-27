@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import '../Providers/authenticationProvider.dart';
-import '../Providers/userProvider.dart';
+import '../Providers/authentication_provider.dart';
+import '../Providers/user_provider.dart';
 
 class PostData with ChangeNotifier {
   createUser(String name, String major, String studyAt, String imageProfil,
@@ -27,7 +27,7 @@ class PostData with ChangeNotifier {
             'imageProfil': imageProfil,
             'userId': userId,
           }));
-      print(response.statusCode);
+
       if (response.statusCode == 200) {
         userData.addUser(
             idUser: jsonDecode(response.body)['name'].toString(),

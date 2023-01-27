@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../Providers/userProvider.dart';
+import '../Providers/user_provider.dart';
 import '../Service/update_data.dart';
 
 class EditUserScreen extends StatelessWidget {

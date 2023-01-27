@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/userProvider.dart';
-import '../Providers/authenticationProvider.dart';
+import 'package:userorganizer/Providers/user_provider.dart';
+import '../Providers/authentication_provider.dart';
 
 class UpdateData with ChangeNotifier {
 

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/userProvider.dart';
+import 'package:userorganizer/Providers/user_provider.dart';
 
-import '../Providers/authenticationProvider.dart';
+import '../Providers/authentication_provider.dart';
 
 class DeleteData with ChangeNotifier {
   deleteUser(String id, BuildContext context) async {

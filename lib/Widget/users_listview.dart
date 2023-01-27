@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/userProvider.dart';
-import 'package:userorganizer/Screen/EditUserScreen.dart';
-import 'package:userorganizer/Service/Deletedata.dart';
+import 'package:userorganizer/Providers/user_provider.dart';
+import 'package:userorganizer/Screen/edit_user_screen.dart';
+import 'package:userorganizer/Service/delete_data.dart';
 
 class UserListview extends StatefulWidget {
   const UserListview({Key? key}) : super(key: key);

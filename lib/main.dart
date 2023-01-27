@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:userorganizer/Providers/userProvider.dart';
-import 'package:userorganizer/Screen/EditUserScreen.dart';
-import 'package:userorganizer/Screen/LoginPage.dart';
-import 'package:userorganizer/Screen/addUserScreen.dart';
+import 'package:userorganizer/Providers/user_provider.dart';
+import 'package:userorganizer/Screen/edit_user_screen.dart';
+import 'package:userorganizer/Screen/login_page.dart';
+import 'package:userorganizer/Screen/add_user_screen.dart';
 
-import 'package:userorganizer/Screen/HomeScreen.dart';
+import 'package:userorganizer/Screen/home_screen.dart';
 
-import 'Providers/authenticationProvider.dart';
+import 'Providers/authentication_provider.dart';
 
 void main() {
   runApp(const MyApp());

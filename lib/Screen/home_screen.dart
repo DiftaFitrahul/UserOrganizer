@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import '../Providers/authenticationProvider.dart';
-import '../Providers/userProvider.dart';
-import '../Screen/addUserScreen.dart';
+import '../Providers/authentication_provider.dart';
+import '../Providers/user_provider.dart';
+import 'add_user_screen.dart';
 import '../Widget/users_listview.dart';
 
 class HomeScreen extends StatefulWidget {
