@@ -16,6 +16,7 @@ class Authentication with ChangeNotifier {
     _idToken = _tempidToken;
     _expiryDate = _tempexpiryDate;
     userId = tempuserId;
+    _autoLogOut();
     notifyListeners();
   }
 
@@ -57,8 +58,6 @@ class Authentication with ChangeNotifier {
     } catch (e) {
       rethrow;
     }
-    _autoLogOut();
-    notifyListeners();
   }
 
   Future<void> signIn(String? email, String? password) async {
@@ -83,8 +82,6 @@ class Authentication with ChangeNotifier {
     } catch (e) {
       rethrow;
     }
-    _autoLogOut();
-    notifyListeners();
   }
 
   void logout() {
@@ -97,14 +94,13 @@ class Authentication with ChangeNotifier {
     if (_timeToExit != null) {
       _timeToExit?.cancel();
     }
-    print(_timeToExit);
     notifyListeners();
   }
 
   void _autoLogOut() {
     final timeToExpire = _tempexpiryDate!.difference(DateTime.now()).inSeconds;
     print(timeToExpire);
-    _timeToExit = Timer(Duration(seconds: 10), () {
+    _timeToExit = Timer(Duration(seconds: timeToExpire), () {
       logout();
     });
   }
