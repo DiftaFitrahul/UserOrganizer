@@ -91,17 +91,20 @@ class Authentication with ChangeNotifier {
     _idToken = null;
     userId = null;
     _expiryDate = null;
-    notifyListeners();
-  }
-
-  void _autoLogOut() {
     //why we do this conditional, cause we want to cancel _timeToExit if that variable is not null
-    //the case is when we do not implement this conditional, when we sign up or sign in we call _autoLogout function
+    //the case when we do not implement this conditional, when we sign up or sign in we call _autoLogout function
     //then when we press logout button direct the timer will not cancelled and still call callback (that the reason), it cause the function still run in memory and thats not good
     if (_timeToExit != null) {
       _timeToExit?.cancel();
     }
-    _timeToExit = Timer(const Duration(seconds: 10), () {
+    print(_timeToExit);
+    notifyListeners();
+  }
+
+  void _autoLogOut() {
+    final timeToExpire = _tempexpiryDate!.difference(DateTime.now()).inSeconds;
+    print(timeToExpire);
+    _timeToExit = Timer(Duration(seconds: 10), () {
       logout();
     });
   }
