@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(onPressed:(){}, icon: const Icon(Icons.logout)),
         title: const Text("List of User"),
         actions: [
           IconButton(
