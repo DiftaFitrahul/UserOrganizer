@@ -8,7 +8,7 @@ import '../Service/update_data.dart';
 class EditUserScreen extends StatelessWidget {
   EditUserScreen({Key? key}) : super(key: key);
   static const routeName = '/EditUser-screen';
-  UpdateData updateData = UpdateData();
+  final updateData = UpdateData();
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,8 @@ class EditUserScreen extends StatelessWidget {
                           if (!formKey.currentState!.validate()) {
                             return;
                           }
-                          updateData.updateUser(
+                          updateData
+                              .updateUser(
                                   nameController.text,
                                   majorController.text,
                                   studyAtController.text,

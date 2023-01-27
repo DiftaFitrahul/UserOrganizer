@@ -5,7 +5,7 @@ import '../Service/post_data.dart';
 class CustomizeUserScreen extends StatelessWidget {
   CustomizeUserScreen({Key? key}) : super(key: key);
   static const routeName = '/User-list';
-  PostData postData = PostData();
+  final postData = PostData();
 
   @override
   Widget build(BuildContext context) {

@@ -35,14 +35,6 @@ class MyApp extends StatelessWidget {
               : FutureBuilder(
                   future: auth.autoLogin(),
                   builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SizedBox(
-                        height: MediaQuery.of(context).size.height / 0.8,
-                        child: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    }
                     return const LoginScreen();
                   },
                 ),
