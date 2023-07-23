@@ -6,7 +6,10 @@ import FlutterMacOS
 import Foundation
 
 import path_provider_foundation
+<<<<<<< Updated upstream
 import shared_preferences_foundation
+=======
+>>>>>>> Stashed changes
 import sqflite
 import url_launcher_macos
 
